@@ -122,6 +122,8 @@ class Copycfg::Host
       Copycfg.logger.warn { "Failed to connect to #{@name}: access denied for #{e}" }
     rescue RuntimeError => e
       Copycfg.logger.warn { "Failed to copy #{@name}: #{e}" }
+    rescue Errno::ECONNREFUSED => e
+      Copycfg.logger.warn { "Failed to connect to #{@name}: connection refused" }
     end
 
     if not completed?
