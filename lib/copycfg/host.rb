@@ -38,12 +38,12 @@ class Copycfg::Host
   def files_from_yaml config
 
     # Host specific entry in configuration file.
-    if config["hosts"][@host]
-      if config["hosts"][@host]["files"]
-        @files += config["hosts"][host]["files"]
+    if config["hosts"][@name]
+      if config["hosts"][@name]["files"]
+        @files += config["hosts"][@name]["files"]
       end
-      if config["hosts"][@host]["filegroups"]
-        config["hosts"][@host]["filegroups"].each do | group |
+      if config["hosts"][@name]["filegroups"]
+        config["hosts"][@name]["filegroups"].each do | group |
           @files += config["filegroups"][group]
         end
       end
